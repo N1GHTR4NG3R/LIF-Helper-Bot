@@ -3,7 +3,7 @@ module.exports = {
 	// Timer to avoid Spam, Useful with API's
 	cooldown: 5,
 	description: 'Command to work out and Monitor Guild Claim Timer',
-	run(bot, message, args, owner, requestArray) {
+	run(bot, message) {
         // User to input monument support points
         // Using only messages that are numbers 
 
@@ -20,12 +20,18 @@ module.exports = {
                 .then((collected) => {
                     let userReply1 = collected.first();
                     // Same as before, first send the message and only after initiating wait for response
+                    if ((userReply1%1) != 0 ){
+                       console.log("Letters Added - Timed out!");
+                    }else {
                     userDmChannel.send("What is your support point cost per day?")
                     .then(() => {
                         let supportCost = message => parseInt(message.content) > 0;
                         userDmChannel.awaitMessages(supportCost, {max: 1, time: 20000, error: ['time']})
                         .then((cost) => {   
                             let userReply2 = cost.first();
+                            if ((userReply1%1) != 0 ){
+                                console.log("Letters Added - Timed out!");
+                            }else {
                             if (userReply1 && userReply2){
                                 let divide = userReply1 / userReply2;
                                 let divide2 = divide / 5;
@@ -35,14 +41,14 @@ module.exports = {
                                 const m = ((i - d) * 24) * 60 % 60 | 0;
                                 userDmChannel.send(`You have ${d} days and ${h} hours and ${m} minutes left`);
                             }
-                        }).catch(err => {
+                        }}).catch(err => {
                             console.log('Error on UserReply2', err);
                         });
                     }).catch((err) => {
                         console.log(`Failed to send DM: `, err);
                     });
     
-                }).catch(err => {
+                }}).catch(err => {
                     console.log('Error on userReply1', err);
                 });
             });
