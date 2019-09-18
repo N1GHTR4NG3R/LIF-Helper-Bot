@@ -115,6 +115,26 @@ bot.on('message', (message) => {
 	}
 });
 
+// Handle rejected promises - no advanced implementation yet, just ensuring they are caught
+process.on('unhandledRejection', error => {
+	// Prints "unhandledRejection woops!"
+	console.log('unhandledRejection', error);
+});
+
+// Interval used to track the current number of requests
+setInterval(() => {
+	let pending = 0;
+	let accepted = 0;
+	for (const req of requestsArray) {
+		if (req.State === "Pending") pending++;
+		if (req.State === "Accepted") accepted++;
+	}
+	console.log("Current number of requests:");
+	console.log("Pending: " + pending);
+	console.log("Accepted: " + accepted);
+	// 30 minutes = 1800000
+}, 1800000);
+
 // Bot log-in details using the token
 bot.login(token);
 
