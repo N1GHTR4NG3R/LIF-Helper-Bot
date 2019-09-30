@@ -35,7 +35,7 @@ module.exports = {
 		// I advise not to change this data on the fly
 		// ============================================================================================
 		
-		// Start building the request object with data provided
+		// Start building the request object with data provided - Get the Category
 		let requestObject = new RequestData();
 		requestObject.setRequester(message.author);
 		requestObject.setGuild(guild);
@@ -96,7 +96,7 @@ module.exports = {
 				requestObject.setItem(items[0]);
 				const pendEmbed = embedGen.generateItemRequest(message.author.username, items[0], quantity);
 
-				// This aprt ensures that we have a reference to the message that THIS bot embeds to the "pending" channel
+				// This part ensures that we have a reference to the message that THIS bot embeds to the "pending" channel
 				// TODO: This filter has to be done smarter if this is going to be resistant to multiple reqs at once!!
 				let filterMyMsgs = msg => true; 
 				// Set up awainting, then later send message
@@ -130,7 +130,7 @@ module.exports = {
 
 				// First create a DM channel towards the message user, then send him the messages. This way awaitMessages can be used
 				message.author.createDM().then((userPmChannel) => {
-					// Send private message once the channel is initialized/found
+					// Send private message once the channel is initialized / found
 					userPmChannel.send(response)
 					.then(() => {
 						// Use only messages that are numbers
@@ -154,10 +154,10 @@ module.exports = {
 								requestObject.setItem(requestedItem);
 								const pendEmbed = embedGen.generateItemRequest(responseMsg.author.username, requestedItem, quantity);
 
-								// This aprt ensures that we have a reference to the message that THIS bot embeds to the "pending" channel
+								// This part ensures that we have a reference to the message that THIS bot embeds to the "pending" channel
 								// TODO: This filter has to be done smarter if this is going to be resistant to multiple reqs at once!!
 								let filterMyMsgs = msg => true; 
-								// Set up awainting, then later send message
+								// Set up awaiting, then later send message
 								pendReqs.awaitMessages(filterMyMsgs, { max: 1, time: 15000, errors: ['time'] })
 								.then((collected) => {
 									// Get the message then put it in the array so it is accessible to the rest of the bot code
@@ -165,12 +165,12 @@ module.exports = {
 									requestObject.setPendingMessage(botPendingMsg);
 									requestObject.setState("Pending");
 									requestArray.push(requestObject);
-									console.log("Request array now has " + requestArray.length + " Objects!");
+									console.log("Request array now has " + requestArray.length + " requests!");
 								}).catch((error) => {
 									responseMsg.author.send("Timed out");
 								});
+								// Output Request
 								pendReqs.send(pendEmbed);
-
 							} else {
 								responseMsg.author.send("Invalid");
 							}

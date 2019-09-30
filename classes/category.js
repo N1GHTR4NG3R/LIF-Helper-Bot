@@ -27,7 +27,7 @@ class Category {
      * @param {*} rawItem Raw item data from items.json
      */
     addItem(rawItem) {
-        // If not Item object, assuem it is JSON item data input, and construct item object from it
+        // If not Item object, assume it is JSON item data input, and construct item object from it
         this.Items.push(new Item(rawItem));
     }
 

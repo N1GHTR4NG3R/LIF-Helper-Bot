@@ -121,8 +121,8 @@ process.on('unhandledRejection', error => {
 	console.log('unhandledRejection', error);
 });
 
-// Interval used to track the current number of requests
-setInterval(() => {
+// Interval used to track the current number of requests - Currently commented out as not working properly
+/* setInterval(() => {
 	let pending = 0;
 	let accepted = 0;
 	for (const req of requestsArray) {
@@ -134,7 +134,7 @@ setInterval(() => {
 	console.log("Accepted: " + accepted);
 	// 30 minutes = 1800000
 }, 1800000);
-
+*/
 // Bot log-in details using the token
 bot.login(token);
 
