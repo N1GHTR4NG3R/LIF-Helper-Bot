@@ -63,11 +63,10 @@ module.exports = {
 			}
 			return flatItemList;
 		}
-		
 		///////////// Actual app stuff that uses functions above //////////
 
 		const interpreter = new InputInterpreter();
-
+		
 		// This is an array for multiple items requested sometime in the future
 		const requested = interpreter.interpret(args);
 		const filteredCategories = [];

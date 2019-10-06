@@ -38,7 +38,7 @@ module.exports = {
 				const coinSortedSheet = filterbyInput(sortData);
 				await coinSortedSheet;
 			}
-
+			// Filter through to match Search Term
 			async function filterbyInput(sortData){
 				const sortedData = sortData;
 				await message.channel.send("What Item do you want market details on?");
@@ -48,21 +48,28 @@ module.exports = {
 				const output = outputRecord(responded, itemName);
 				output;
 			}
-
+			// User Input
 			async function response(sortedData){
 				const filter = m => sortedData.filter(respond => m.content.includes(respond.Name));
 				const collector = await message.channel.awaitMessages(filter, {time: 10000, max: 1});
 				return collector.first().content;
 			}
-
+			// Output
 			async function outputRecord(responded, itemName){
+				// Define the amount of pages needed
 				const pages = responded.length;
+				// Default first page to 1
 				let page = 1;
+				// Loop first Array
 				for (let i = 0; i < responded.length; i++){
+					// Grab first array length
 					const item = responded[i];
 						if (i == page-1){
+							// Build message
 							let embOutput = buildembOutput(item, user, page, pages, itemName);
+							// Send message
 							message.channel.send(embOutput).then(msg => {
+								// Add reactions
 								msg.react('◀').then( r => {
 									msg.react('▶')
 										// Filters
@@ -83,9 +90,9 @@ module.exports = {
 										next.on('collect', r => {
 											if (page === pages) return; // If on last page, disable going forwards!
 											page++; // Not on last page, go forward
-											// embOutput.setFooter(`Page ${page} of ${pages} || © Lifguilds - A LIF:MMO Bot`);
 											embOutput = buildembOutput(responded[page-1], user, page, pages, itemName);
 											msg.edit(embOutput);
+											// Remove reactions
 											r.remove(r.users.filter(u => u === message.author).first());
 										})
 									})
@@ -93,6 +100,7 @@ module.exports = {
 						}
 					}
 				}
+			// Embed Builder
 			function buildembOutput(item, user, page, pages, itemName){
 				const embOutput = new Discord.RichEmbed()
 							.setColor('#1eb7d9')

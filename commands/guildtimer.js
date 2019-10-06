@@ -36,7 +36,17 @@ module.exports = {
                                 const d = i | 0;
                                 const h = (i - d) * 24 | 0;
                                 const m = ((i - d) * 24) * 60 % 60 | 0;
-                                userDmChannel.send(`You have ${d} days and ${h} hours and ${m} minutes left`);
+                               
+                                let timeMsg = new Discord.RichEmbed(d, h, m)
+                                .setColor('#1eb7d9')
+                                .setTitle(`Monument Timer`)
+                                .setDescription(`The amount of time you have left is:`)
+                                .addField(`__Days:__`, d)
+                                .addField(`__Hours:__`, h)
+                                .addField(`__Minutes:__`, m)
+                                .setThumbnail('https://i.imgur.com/hmWTeKv.png')
+                                .setFooter(` © Lifguilds - A LIF:MMO Bot`);
+                                userDmChannel.send(`${timeMsg}`);
                             }
                         }}).catch(err => {
                             console.log('Error on UserReply2', err);
