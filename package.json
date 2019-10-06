@@ -1,0 +1,31 @@
+{
+  "name": "lif-helper-bot",
+  "version": "1.0.0",
+  "description": "A LIF:MMO Discord bot, Designed to help ease some tasks for players, and to help teach newer players",
+  "main": "Index.js",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tricky-Ricky/LIF-Helper-Bot.git"
+  },
+  "keywords": [
+    "LIF:MMO",
+    "Life",
+    "is",
+    "Feudal",
+    "Discord",
+    "Bots"
+  ],
+  "author": "Richard Ballard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tricky-Ricky/LIF-Helper-Bot/issues"
+  },
+  "homepage": "https://github.com/Tricky-Ricky/LIF-Helper-Bot#readme"
+}
