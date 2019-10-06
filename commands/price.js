@@ -112,7 +112,7 @@ module.exports = {
 							.addField(`__Price:__`, item.CoinPrice)
 							.addField(`__Tradepost__`, item.TradePostName)
 							.setThumbnail('https://i.imgur.com/hmWTeKv.png')
-							.setFooter(` Page ${page} of ${pages} || © Lifguilds - A LIF:MMO Bot`);
+							.setFooter(` Page ${page} of ${pages} || © LIF Helper Bot - 2019 `);
 							return embOutput;
 			}
 		}catch (error) {

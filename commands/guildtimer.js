@@ -45,7 +45,7 @@ module.exports = {
                                 .addField(`__Hours:__`, h)
                                 .addField(`__Minutes:__`, m)
                                 .setThumbnail('https://i.imgur.com/hmWTeKv.png')
-                                .setFooter(` © Lifguilds - A LIF:MMO Bot`);
+                                .setFooter(` © LIF Helper Bot - 2019`);
                                 userDmChannel.send(`${timeMsg}`);
                             }
                         }}).catch(err => {

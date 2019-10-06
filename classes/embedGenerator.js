@@ -21,7 +21,7 @@ class EmbedGenerator {
         .addField(`__Skill:__`, item.Skill)
         .addField(`__Resources:__`, item.resourcesToString(quantity))
         .setThumbnail('https://i.imgur.com/hmWTeKv.png')
-        .setFooter(' © Lifguilds - A LIF:MMO Bot');
+        .setFooter(' © LIF Helper Bot - 2019');
         return pendEmbed;
     }
 
@@ -35,7 +35,7 @@ class EmbedGenerator {
         .addField(`__Category:__`, item.Category)
         .addField(`__Item:__`, item.Name + " x " + requestData.RequestCommand.Quantity)
         .setThumbnail('https://i.imgur.com/hmWTeKv.png')
-        .setFooter(' © Lifguilds - A LIF:MMO Bot');
+        .setFooter(' © LIF Helper Bot - 2019');
         return pendEmbed;
     }
 
@@ -49,7 +49,7 @@ class EmbedGenerator {
         .addField(`__Completer:__`, requestData.Taker.username)
         .addField(`__Item:__`, item.Name + " x " + requestData.RequestCommand.Quantity)
         .setThumbnail('https://i.imgur.com/hmWTeKv.png')
-        .setFooter(' © Lifguilds - A LIF:MMO Bot');
+        .setFooter(' © LIF Helper Bot - 2019');
         return pendEmbed;
     }
 }
