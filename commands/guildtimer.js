@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 module.exports = {
 	name: 'guildtimer',
 	// Timer to avoid Spam, Useful with API's
@@ -33,20 +34,10 @@ module.exports = {
                                 let divide = userReply1 / userReply2;
                                 let divide2 = divide / 5;
                                 const i = divide2;
-                                const d = i | 0;
-                                const h = (i - d) * 24 | 0;
-                                const m = ((i - d) * 24) * 60 % 60 | 0;
-                               // Send Embed
-                                let timeMsg = new Discord.RichEmbed(d, h, m)
-                                .setColor('#1eb7d9')
-                                .setTitle(`Monument Timer`)
-                                .setDescription(`The amount of time you have left is:`)
-                                .addField(`__Days:__`, d)
-                                .addField(`__Hours:__`, h)
-                                .addField(`__Minutes:__`, m)
-                                .setThumbnail('https://i.imgur.com/hmWTeKv.png')
-                                .setFooter(` © LIF Helper Bot - 2019`);
-                                userDmChannel.send(`${timeMsg}`);
+                                let d = i | 0;
+                                let h = (i - d) * 24 | 0;
+                                let m = ((i - d) * 24) * 60 % 60 | 0;
+                                userDmChannel.send(`${d} Day(s) ${h} Hours and ${m} : Minutes`);
                             }
                         }}).catch(err => {
                             console.log('Error on UserReply2', err);
