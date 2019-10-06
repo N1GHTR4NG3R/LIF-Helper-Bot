@@ -36,7 +36,7 @@ module.exports = {
                                 const d = i | 0;
                                 const h = (i - d) * 24 | 0;
                                 const m = ((i - d) * 24) * 60 % 60 | 0;
-                               
+                               // Send Embed
                                 let timeMsg = new Discord.RichEmbed(d, h, m)
                                 .setColor('#1eb7d9')
                                 .setTitle(`Monument Timer`)
