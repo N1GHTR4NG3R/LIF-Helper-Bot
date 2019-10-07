@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const regionals = require("../assets/regions.json");
 // Add the filesystem
 const fs = require('fs');
 module.exports = {
@@ -26,34 +27,38 @@ module.exports = {
 					let sales = JSON.parse(salesInfo);
 					// set the loop area
 					let salesSheet = sales.data;
-					const salesData = sortbyCoinPrice(salesSheet);
-					salesData;
-				});
-			// Sort by coin price Lowest - Highest
-			async function sortbyCoinPrice(salesSheet){
-				let sortData = salesSheet;
-				sortData.sort(function(a, b){
-					return a.CoinPrice - b.CoinPrice;
-				});
-				const coinSortedSheet = filterbyInput(sortData);
-				await coinSortedSheet;
-			}
-			// Filter through to match Search Term
-			async function filterbyInput(sortData){
-				const sortedData = sortData;
-				await message.channel.send("What Item do you want market details on?");
-				const itemName = await response(sortedData);
-				filteredData = sortedData.filter(response => itemName.includes(response.Name));
-				let responded = await filteredData.map(response => (response));
-				const output = outputRecord(responded, itemName);
-				output;
-			}
-			// User Input
+					// Sort by coin price Lowest - Highest
+					let sortData = salesSheet;
+					sortData.sort(function(a, b){
+						return a.CoinPrice - b.CoinPrice;
+					});
+					const initiate = findItem(sortData);
+					await initiate;
+				});		
+
+			// Get Item from input;
 			async function response(sortedData){
 				const filter = m => sortedData.filter(respond => m.content.includes(respond.Name));
 				const collector = await message.channel.awaitMessages(filter, {time: 10000, max: 1});
 				return collector.first().content;
 			}
+
+			// Embed Builder
+			function buildembOutput(item, user, page, pages, itemName){
+				const embOutput = new Discord.RichEmbed()
+					.setColor('#1eb7d9')
+					.setTitle(`Market Price for ${itemName}`)
+					.setDescription(`${user}`)
+					.addField(`__Item:__`, item.Name)
+					.addField(`__Quality:__`, item.Quality)
+					.addField(`__Quantity:__`, item.Quantity)
+					.addField(`__Price:__`, item.CoinPrice)
+					.addField(`__Tradepost__`, item.TradePostName)
+					.setThumbnail('https://i.imgur.com/hmWTeKv.png')
+					.setFooter(` Page ${page} of ${pages} || © LIF Helper Bot - 2019 `);
+					return embOutput;
+			}
+
 			// Output
 			async function outputRecord(responded, itemName){
 				// Define the amount of pages needed
@@ -65,56 +70,53 @@ module.exports = {
 					// Grab first array length
 					const item = responded[i];
 						if (i == page-1){
-							// Build message
-							let embOutput = buildembOutput(item, user, page, pages, itemName);
-							// Send message
-							message.channel.send(embOutput).then(msg => {
-								// Add reactions
-								msg.react('◀').then( r => {
-									msg.react('▶')
-										// Filters
-										const prevFilter = (reaction, user) => reaction.emoji.name === '◀' && user.id === message.author.id;
-										const nextFilter = (reaction, user) => reaction.emoji.name === '▶' && user.id === message.author.id;
-										// Collectors
-										const previous = msg.createReactionCollector(prevFilter);
-										const next = msg.createReactionCollector(nextFilter);
-										// Manage Collections
-										previous.on('collect', r => {
-											if (page === 1) return; // If on first page, disable going back!
-											page--; // Not on first page, go back
-											embOutput = buildembOutput(responded[page-1], user, page, pages, itemName);
-											msg.edit(embOutput);
-											// removes reaction
-											r.remove(r.users.filter(u => u === message.author).first());
-										})
-										next.on('collect', r => {
-											if (page === pages) return; // If on last page, disable going forwards!
-											page++; // Not on last page, go forward
-											embOutput = buildembOutput(responded[page-1], user, page, pages, itemName);
-											msg.edit(embOutput);
-											// Remove reactions
-											r.remove(r.users.filter(u => u === message.author).first());
-										})
-									})
-							});
-						}
+								// Build message
+								let embOutput = buildembOutput(item, user, page, pages, itemName);
+								// Send message
+								message.channel.send(embOutput).then(msg => {
+									// Add reactions
+									msg.react('◀').then( r => {
+										msg.react('▶')
+									// Filters
+									const prevFilter = (reaction, user) => reaction.emoji.name === '◀' && user.id === message.author.id;
+									const nextFilter = (reaction, user) => reaction.emoji.name === '▶' && user.id === message.author.id;
+									// Collectors
+									const previous = msg.createReactionCollector(prevFilter);
+									const next = msg.createReactionCollector(nextFilter);
+									// Manage Collections
+									previous.on('collect', r => {
+								if (page === 1) return; // If on first page, disable going back!
+									page--; // Not on first page, go back
+									embOutput = buildembOutput(responded[page-1], user, page, pages, itemName);
+									msg.edit(embOutput);
+									// removes reaction
+									r.remove(r.users.filter(u => u === message.author).first());
+								})
+								next.on('collect', r => {
+									if (page === pages) return; // If on last page, disable going forwards!
+									page++; // Not on last page, go forward
+									embOutput = buildembOutput(responded[page-1], user, page, pages, itemName);
+									msg.edit(embOutput);
+									// Remove reactions
+									r.remove(r.users.filter(u => u === message.author).first());
+								})
+							})
+						});
 					}
 				}
-			// Embed Builder
-			function buildembOutput(item, user, page, pages, itemName){
-				const embOutput = new Discord.RichEmbed()
-							.setColor('#1eb7d9')
-							.setTitle(`Market Price for ${itemName}`)
-							.setDescription(`${user}`)
-							.addField(`__Item:__`, item.Name)
-							.addField(`__Quality:__`, item.Quality)
-							.addField(`__Quantity:__`, item.Quantity)
-							.addField(`__Price:__`, item.CoinPrice)
-							.addField(`__Tradepost__`, item.TradePostName)
-							.setThumbnail('https://i.imgur.com/hmWTeKv.png')
-							.setFooter(` Page ${page} of ${pages} || © LIF Helper Bot - 2019 `);
-							return embOutput;
 			}
+
+			// User Input for Searching
+			async function findItem(sortData){
+				const sortedData = sortData;
+				await message.channel.send("What Item do you want the market details on?");
+				const itemName = await response(sortedData);
+				filteredName = sortedData.filter(response => itemName.includes(response.Name));
+				let responded = await filteredName.map(response => (response));
+				const output = await outputRecord(responded, itemName);
+				output;
+			}
+
 		}catch (error) {
 			console.error(error);
 		}

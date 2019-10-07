@@ -1,0 +1,164 @@
+{
+    "regions": [
+        {
+        "RegionID": "15",
+        "RegionNameID": "5337",
+        "Region": "Oyensrog"
+        },
+        {
+        "RegionID": "16",
+        "RegionNameID": "5338",
+        "Region": "Kjostenbrud"
+        },
+        {
+        "RegionID": "17",
+        "RegionNameID": "5339",
+        "Region": "Jarlslig"
+        },
+        {
+        "RegionID": "18",
+        "RegionNameID": "5340",
+        "Region": "Holengen"
+        },
+        {
+        "RegionID": "19",
+        "RegionNameID": "5341",
+        "Region": "Altenbrog"
+        },
+        {
+        "RegionID": "20",
+        "RegionNameID": "5342",
+        "Region": "Bergshaft"
+        },
+        {
+        "RegionID": "21",
+        "RegionNameID": "5343",
+        "Region": "Islandlend"
+        },
+        {
+        "RegionID": "22",
+        "RegionNameID": "5344",
+        "Region": "Goddenjord"
+        },
+        {
+        "RegionID": "23",
+        "RegionNameID": "5345",
+        "Region": "Schneelgloom"
+        },
+        {
+        "RegionID": "24",
+        "RegionNameID": "5346",
+        "Region": "Klausenland"
+        },
+        {
+        "RegionID": "25",
+        "RegionNameID": "5347",
+        "Region": "Snoenfeld"
+        },
+        {
+        "RegionID": "26",
+        "RegionNameID": "5348",
+        "Region": "Greusmergen"
+        },
+        {
+        "RegionID": "27",
+        "RegionNameID": "5349",
+        "Region": "Phat-Tsarai"
+        },
+        {
+        "RegionID": "28",
+        "RegionNameID": "5350",
+        "Region": "Roysbad"
+        },
+        {
+        "RegionID": "29",
+        "RegionNameID": "5351",
+        "Region": "Khatchakten"
+        },
+        {
+        "RegionID": "30",
+        "RegionNameID": "5352",
+        "Region": "Scharzenweg"
+        },
+        {
+        "RegionID": "31",
+        "RegionNameID": "5353",
+        "Region": "Haaz-Koohrai"
+        },
+        {
+        "RegionID": "32",
+        "RegionNameID": "5354",
+        "Region": "Kron-Insel"
+        },
+        {
+        "RegionID": "33",
+        "RegionNameID": "5355",
+        "Region": "Amathemgir"
+        },
+        {
+        "RegionID": "34",
+        "RegionNameID": "5356",
+        "Region": "Tsarhim-then"
+        },
+        {
+        "RegionID": "35",
+        "RegionNameID": "5357",
+        "Region": "Frosnenjord"
+        },
+        {
+        "RegionID": "36",
+        "RegionNameID": "5358",
+        "Region": "Jodensbrug"
+        },
+        {
+        "RegionID": "37",
+        "RegionNameID": "5359",
+        "Region": "Uffer-de-furst"
+        },
+        {
+        "RegionID": "38",
+        "RegionNameID": "5360",
+        "Region": "Smalbucht"
+        },
+        {
+        "RegionID": "39",
+        "RegionNameID": "5361",
+        "Region": "Shin-Shin cakmet"
+        },
+        {
+        "RegionID": "40",
+        "RegionNameID": "5362",
+        "Region": "Kharai-glod"
+        },
+        {
+        "RegionID": "41",
+        "RegionNameID": "5363",
+        "Region": "Bathai-azgyr"
+        },
+        {
+        "RegionID": "42",
+        "RegionNameID": "5364",
+        "Region": "Urzunai"
+        },
+        {
+        "RegionID": "43",
+        "RegionNameID": "5365",
+        "Region": "Tashmyr-chak"
+        },
+        {
+        "RegionID": "44",
+        "RegionNameID": "5366",
+        "Region": "Zelzerdorn"
+        },
+        {
+        "RegionID": "45",
+        "RegionNameID": "5367",
+        "Region": "Cet-dan"
+        },
+        {
+        "RegionID": "46",
+        "RegionNameID": "5368",
+        "Region": "Langerzehrt berg"
+        }
+    ]
+}
