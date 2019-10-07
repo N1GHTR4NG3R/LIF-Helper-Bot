@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-module.exports {
+module.exports = {
     name: 'memberinfo',
     cooldown: 5, // timer to avoid Spam
     description: 'Command for member/user information',
@@ -37,7 +37,7 @@ module.exports {
                 let memberJoined = member.joinedAt.toString().split(' ');
 
                 let embed = new Discord.RichEmbed() // creates embed with user information
-                    .setTitle(`This is the your info`)
+                    .setTitle(`This is your info`)
                     .setDescription(`Requested by yourself`)
                     .setThumbnail(user.avatarURL)
                     .addField("Username", `${user.username}#${user.discriminator}`, true)
@@ -56,5 +56,5 @@ module.exports {
         } catch (e){
             console.log(e.stack);
         }
-    };
+    }
 };
