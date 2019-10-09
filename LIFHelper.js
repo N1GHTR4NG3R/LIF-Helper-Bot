@@ -17,7 +17,7 @@ const requestsArray = [];
 bot.commands = new Discord.Collection();
 
 // Create the command handler fs
-fs.readdir('./commands/', (err, files) => { // Reads commands folder directory
+fs.readdir(__dirname+'/commands/', (err, files) => { // Reads commands folder directory
 	if (err) console.error(err); // Sends an error message if commands has an error;
 	const commandFiles = files.filter(f => f.split('.').pop() === 'js');
 	if (commandFiles.length <= 0) {return console.log('No commands found');}
@@ -31,7 +31,7 @@ fs.readdir('./commands/', (err, files) => { // Reads commands folder directory
 });
 
 // Create the event handler fs
-fs.readdir('./events/', (err, files) => {
+fs.readdir(__dirname+'/events/', (err, files) => {
 	if (err) return console.error(err);
 	files.forEach(file => {
 		const event = require(`./events/${file}`);

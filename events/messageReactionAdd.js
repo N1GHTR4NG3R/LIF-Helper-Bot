@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const EmbedGenerator = require('../classes/embedGenerator.js');
 
 // The "global" requestArray access - used to get currently active requests - Smart :P
-const requestArray = require('../Guildlife.js');
+const requestArray = require('../LIFHelper.js');
 
 module.exports = (bot, reaction, member) => {
 	// Define the guild

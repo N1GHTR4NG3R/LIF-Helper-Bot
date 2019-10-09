@@ -21,6 +21,9 @@ module.exports = {
 			fs.readFile('./scraped_files/current_sales.json',
 				// callback function that's called when reading a file is done!
 				async function(err, data) {
+					if (err) {
+						throw err;
+					}
 					// json data
 					let salesInfo = data;
 					// parse Json file
