@@ -33,7 +33,7 @@ module.exports = {
 					// Sort by coin price Lowest - Highest
 					let sortData = salesSheet;
 					sortData.sort(function(a, b){
-						return a.CoinPrice - b.CoinPrice;
+						return b.Quality - a.Quality;
 					});
 					const initiate = findItem(sortData);
 					await initiate;
