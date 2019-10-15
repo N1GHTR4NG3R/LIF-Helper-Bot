@@ -21,7 +21,7 @@ module.exports = {
                     .addField("ID", `${user.id}`, true)
                     .addField("Created at", `${userCreated[2]} ${userCreated[1]} ${userCreated[3]}`, true)
                     .addField("Joined at", `${memberJoined[2]} ${memberJoined[1]} ${memberJoined[3]}`, true)
-                    .addField("Roles", member.roles.map(r => `${r}`).join(' | '), true, true)
+                    .addField("Roles", member.roles.filter(role => role.name !== '@everyone').map(r => `${r}`).join(' | '), true, true)
                     // Design 
                     .setColor("#428745")
                     .setTimestamp()
@@ -44,7 +44,7 @@ module.exports = {
                     .addField("ID", `${user.id}`, true)
                     .addField("Created at", `${userCreated[2]} ${userCreated[1]} ${userCreated[3]}`, true)
                     .addField("Joined at", `${memberJoined[2]} ${memberJoined[1]} ${memberJoined[3]}`, true)
-                    .addField("Roles", member.roles.map(r => `${r}`).join(' | '), true, true)
+                    .addField("Roles", member.roles.filter(role => role.name !== '@everyone').map(r => `${r}`).join(' | '), true, true)
                     // Design 
                     .setColor("#428745")
                     .setTimestamp()
