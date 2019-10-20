@@ -14,10 +14,10 @@ module.exports = {
                 let memberJoined = member.joinedAt.toString().split(' '); // split the date for better reading
 
                 let embed = new Discord.RichEmbed() // creates embed with user information
-                    .setTitle(`This is the ${user.username}#${user.discriminator}'s info`)
+                    .setTitle(`This is the ${user.tag}'s info`)
                     .setDescription(`Requested by ${message.author}`)
                     .setThumbnail(user.avatarURL)
-                    .addField("Username", `${user.username}#${user.discriminator}`, true)
+                    .addField("Username", `${user.tag}`, true)
                     .addField("ID", `${user.id}`, true)
                     .addField("Created at", `${userCreated[2]} ${userCreated[1]} ${userCreated[3]}`, true)
                     .addField("Joined at", `${memberJoined[2]} ${memberJoined[1]} ${memberJoined[3]}`, true)
@@ -40,7 +40,7 @@ module.exports = {
                     .setTitle(`This is your info`)
                     .setDescription(`Requested by yourself`)
                     .setThumbnail(user.avatarURL)
-                    .addField("Username", `${user.username}#${user.discriminator}`, true)
+                    .addField("Username", `${user.tag}`, true)
                     .addField("ID", `${user.id}`, true)
                     .addField("Created at", `${userCreated[2]} ${userCreated[1]} ${userCreated[3]}`, true)
                     .addField("Joined at", `${memberJoined[2]} ${memberJoined[1]} ${memberJoined[3]}`, true)
